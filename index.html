@@ -2,93 +2,76 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#111326">
-<title>영원의 구슬 — 캐릭터 생성</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<title>영원의 구슬 — 모험가 등록</title>
 <style>
-:root{color-scheme:dark;--gold:#e8c98b;--muted:#aaa9c2;--panel:#17182d;--line:#6f6387;--violet:#a88bff}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#090d1b;color:#f6f0ff;font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;display:grid;place-items:center;padding:18px;overflow-x:hidden}
-.scene{width:min(100%,520px);min-height:min(900px,calc(100dvh - 36px));position:relative;overflow:hidden;border:2px solid #78658f;border-radius:12px;background:linear-gradient(#1c3150 0%,#536b86 40%,#28334a 65%,#111326 100%);box-shadow:0 20px 80px #000b}
-.sky{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,#fff5cf55,transparent 35%),linear-gradient(180deg,#8bb8d7 0%,#344c72 58%,#182036 100%)}
-.moon{position:absolute;width:74px;height:74px;border-radius:50%;background:#fff1c9;top:12%;right:13%;box-shadow:0 0 40px #fff0bd88}
-.mountain{position:absolute;bottom:34%;width:130%;height:36%;left:-15%;background:#303d5a;clip-path:polygon(0 100%,22% 22%,34% 65%,52% 0,73% 62%,86% 25%,100% 100%)}
-.castle{position:absolute;bottom:39%;right:7%;width:100px;height:135px;background:#55516d;clip-path:polygon(0 100%,0 35%,15% 35%,15% 18%,26% 18%,26% 0,39% 0,39% 27%,55% 27%,55% 9%,68% 9%,68% 35%,100% 35%,100% 100%);filter:drop-shadow(4px 5px 0 #15182b)}
-.castle:after{content:"";position:absolute;inset:45% 10% 0;background:repeating-linear-gradient(90deg,#e8c98b 0 5px,transparent 5px 19px)}
-.ground{position:absolute;bottom:0;height:38%;width:130%;left:-15%;background:repeating-linear-gradient(0deg,#24253b 0 8px,#30334d 8px 16px);clip-path:polygon(0 100%,9% 45%,27% 24%,45% 37%,67% 13%,86% 30%,100% 100%)}
-header{position:relative;text-align:center;padding:26px 18px 0;text-shadow:0 3px 0 #171326}
-.orb{width:42px;height:42px;border:2px solid var(--gold);border-radius:50%;margin:0 auto 8px;background:radial-gradient(circle at 35% 30%,#fff,#c6a5ff 20%,#6d43c5 48%,#17102e 72%);box-shadow:0 0 22px #a88bff}
-h1{margin:0;font-family:serif;font-size:clamp(28px,7vw,40px);letter-spacing:.12em;color:#fff1cf}
-.subtitle{margin:7px 0 0;color:#e4dcf4;font-size:12px;letter-spacing:.2em}
-.content{position:relative;padding:22px 18px 20px;display:flex;flex-direction:column;gap:14px}
-.panel{background:linear-gradient(145deg,#17182deF,#101326ed);border:1px solid var(--line);border-radius:9px;padding:14px;box-shadow:0 8px 20px #07091488}
-.section-title{font-size:12px;letter-spacing:.12em;color:var(--gold);margin:0 0 10px}
-.gender{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.choice{border:1px solid #5c5578;background:#24243c;border-radius:8px;color:#e9e1f5;padding:9px 8px;cursor:pointer;display:grid;justify-items:center;gap:4px;transition:.15s}
-.choice[aria-pressed=true]{border:2px solid #b9a1ff;background:#30294c;box-shadow:0 0 16px #9d7aff55}
-.choice span{font-size:13px}.choice small{color:var(--muted);font-size:10px}
-.preview{height:154px;display:grid;place-items:center;position:relative;background:linear-gradient(180deg,#29334c99,#15182a99);border:1px solid #4d4b68;border-radius:8px;overflow:hidden}
-.preview:before{content:"";position:absolute;bottom:16px;width:150px;height:18px;border-radius:50%;background:#080b17aa;filter:blur(5px)}
-canvas{width:128px;height:144px;image-rendering:pixelated;position:relative;z-index:1}
-input{width:100%;background:#0d1020;border:1px solid #6c6380;border-radius:7px;padding:13px;color:white;font-size:16px;outline:none}
-input:focus{border-color:#c4a9ff;box-shadow:0 0 0 3px #a88bff25}
-.hint{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-top:6px}
-button.primary{width:100%;padding:14px;border:1px solid #f1d69b;border-radius:8px;background:linear-gradient(#64518d,#30264d);color:#fff2d4;font-size:16px;font-weight:700;letter-spacing:.08em;cursor:pointer;box-shadow:0 4px 0 #171226}
-button.primary:disabled{opacity:.45;cursor:not-allowed}
-.story{text-align:center;color:#d7cce8;font-family:serif;font-size:12px;line-height:1.8;margin:0}
-.notice{font-size:11px;color:#c6bfd7;text-align:center;min-height:16px}
-@media(min-height:850px){.content{gap:17px;padding-top:30px}.preview{height:180px}canvas{height:166px;width:148px}}
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap');
+:root{color-scheme:dark;--bg:#090d18;--panel:#121a2b;--panel2:#18243a;--line:#34445d;--gold:#e9c98c;--gold2:#a9824e;--ink:#f2eee5;--muted:#a8b2c3;--violet:#b9a0f4;--red:#d58b88}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -10%,#283451 0,transparent 52%),linear-gradient(145deg,#080c16,#10182a 60%,#090d18);color:var(--ink);font-family:'Noto Sans KR',sans-serif;padding:24px 14px 40px}
+button,input{font:inherit}.shell{width:min(100%,980px);margin:auto}.topline{display:flex;justify-content:space-between;align-items:center;color:#b6bdc9;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:0 3px 15px;border-bottom:1px solid #ffffff18}.sigil{color:var(--gold)}.herohead{text-align:center;padding:26px 10px 24px}.orb{width:46px;height:46px;margin:0 auto 10px;border:1px solid #f0d9a8;border-radius:50%;background:radial-gradient(circle at 34% 28%,#fff9df 0 5%,#d7b8ff 14%,#8763bd 38%,#261d40 70%);box-shadow:0 0 18px #bba0f477,0 0 50px #8d71d033;position:relative}.orb:after{content:"";position:absolute;inset:7px;border:1px solid #fff8;border-radius:50%}h1{font:700 clamp(30px,6vw,46px)/1.2 'Gowun Batang',serif;letter-spacing:.12em;color:#f6e7c6;margin:0;text-shadow:0 2px 18px #d7b8ff22}.subtitle{font-size:10px;letter-spacing:.28em;color:#b7a9d1;margin:9px 0 0}.intro{font:14px/1.9 'Gowun Batang',serif;color:#c8c5cf;margin:14px auto 0;max-width:520px}
+.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);gap:16px;align-items:stretch}.card{background:linear-gradient(155deg,#18243aee,#101827f5);border:1px solid var(--line);box-shadow:0 18px 45px #0005,inset 0 1px #ffffff0b;border-radius:5px;overflow:hidden}.cardhead{display:flex;align-items:center;justify-content:space-between;padding:14px 17px;border-bottom:1px solid #ffffff12;background:#ffffff05}.eyebrow{font-size:10px;letter-spacing:.18em;color:var(--gold)}.step{font-size:10px;color:#8391a8}.portraitarea{min-height:310px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 67%,#8e79a833,transparent 36%),linear-gradient(180deg,#263955 0%,#17253a 55%,#111a2a 100%)}.stars{position:absolute;inset:0;background-image:radial-gradient(#e8d9b5 1px,transparent 1px),radial-gradient(#c9b9ee 1px,transparent 1px);background-size:53px 47px,79px 67px;background-position:7px 11px,31px 22px;opacity:.34}.moon{position:absolute;top:34px;right:15%;width:48px;height:48px;border-radius:50%;background:#f0dfbd;box-shadow:0 0 30px #e8d7b477}.ruin{position:absolute;bottom:31px;right:8%;width:112px;height:100px;opacity:.56;background:linear-gradient(90deg,transparent 0 12%,#69728b 12% 20%,transparent 20% 27%,#68718b 27% 39%,transparent 39% 46%,#68718b 46% 58%,transparent 58%);clip-path:polygon(0 100%,0 48%,12% 48%,12% 17%,24% 17%,24% 40%,36% 40%,36% 0,50% 0,50% 35%,65% 35%,65% 12%,78% 12%,78% 50%,100% 50%,100% 100%)}.ground{position:absolute;bottom:0;left:0;right:0;height:54px;background:repeating-linear-gradient(0deg,#253149 0 7px,#2d3a53 7px 14px);border-top:2px solid #59617a}.platform{position:absolute;bottom:37px;width:190px;height:24px;border-radius:50%;background:#080e1a;box-shadow:0 0 20px #080e1a}.sprite{position:relative;z-index:2;width:192px;height:240px;image-rendering:pixelated;filter:drop-shadow(0 12px 10px #05081299)}.portraitlabel{position:absolute;bottom:12px;left:16px;color:#c3c7d0;font-size:9px;letter-spacing:.16em;z-index:3}.controls{padding:16px 17px 18px}.fieldlabel{display:block;color:var(--gold);font-size:11px;letter-spacing:.1em;margin-bottom:9px}.gender{display:grid;grid-template-columns:1fr 1fr;gap:9px}.choice{background:#111a2a;border:1px solid #40516d;color:#dce1ea;padding:10px 12px;display:flex;align-items:center;gap:10px;text-align:left;cursor:pointer;border-radius:3px;transition:.16s}.choice[aria-pressed=true]{border-color:var(--gold);background:#302b37;box-shadow:inset 0 0 0 1px #d7b77c55}.mini{width:25px;height:32px;image-rendering:pixelated}.choice strong{display:block;font-size:12px}.choice small{display:block;color:#9ba8bb;font-size:9px;margin-top:2px}.namebox{margin-top:17px}.nameinput{width:100%;padding:12px 13px;color:#fff;background:#0b1220;border:1px solid #40516d;border-radius:3px;outline:none}.nameinput:focus{border-color:var(--gold);box-shadow:0 0 0 2px #e9c98c22}.hint{display:flex;justify-content:space-between;color:#8492a8;font-size:10px;margin-top:6px}
+.rightcol{display:flex;flex-direction:column;gap:16px}.stats{padding:15px 17px 17px}.statsintro{font-size:10px;color:#9eabc0;margin:-2px 0 12px}.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{background:#0e1726;border:1px solid #293a53;padding:10px 11px;display:flex;justify-content:space-between;align-items:center}.stat span{font-size:11px;color:#cbd2dc}.stat b{font:700 16px Georgia,serif;color:#f1d8a7}.stat small{display:block;color:#77869d;font-size:8px;margin-top:2px}.rules{padding:15px 17px 16px}.ruleline{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #ffffff0d;font-size:11px;color:#bdc6d3;line-height:1.6}.ruleline:last-child{border:0;padding-bottom:0}.bullet{color:var(--gold);font-size:13px}.foot{margin-top:16px}.primary{width:100%;padding:15px;border:1px solid #f1d9a5;background:linear-gradient(180deg,#8d714a,#59452f);color:#fff4dc;font-weight:800;letter-spacing:.12em;cursor:pointer;border-radius:3px;box-shadow:0 4px 0 #2b2119;transition:.12s}.primary:hover{filter:brightness(1.12);transform:translateY(-1px)}.primary:disabled{opacity:.4;cursor:not-allowed;filter:grayscale(.5);transform:none}.notice{min-height:20px;text-align:center;color:#b6a9c9;font-size:10px;margin:12px 0 0}.fineprint{text-align:center;color:#69778c;font-size:9px;line-height:1.7;margin:15px auto 0;max-width:650px}
+@media(max-width:700px){body{padding:12px 10px 28px}.topline{font-size:9px}.herohead{padding:21px 8px}.layout{grid-template-columns:1fr}.portraitarea{min-height:270px}.sprite{height:215px;width:172px}.rightcol{display:grid;grid-template-columns:1fr}.intro{font-size:13px}.cardhead{padding:12px 14px}.controls,.stats,.rules{padding-left:14px;padding-right:14px}}
+@media(min-width:701px){.rightcol{grid-column:2}.leftcol{grid-row:1 / span 2}.foot{grid-column:1 / -1;max-width:520px;width:100%;justify-self:center}}
 </style>
 </head>
 <body>
-<main class="scene">
-<div class="sky"></div><div class="moon"></div><div class="mountain"></div><div class="castle"></div><div class="ground"></div>
-<header><div class="orb"></div><h1>영원의 구슬</h1><p class="subtitle">ETERNAL ORB · CHARACTER CREATION</p></header>
-<section class="content">
-<p class="story">이 세계에 다시 깨어난 당신.<br>모든 것은, 새로운 이야기의 시작—</p>
-<div class="panel">
-<p class="section-title">01 · 캐릭터 선택</p>
+<main class="shell">
+<div class="topline"><span class="sigil">✦ ETERNAL ORB</span><span>ADVENTURER REGISTRATION · 001</span></div>
+<header class="herohead"><div class="orb"></div><h1>영원의 구슬</h1><p class="subtitle">THE CHRONICLE BEGINS</p><p class="intro">모든 여정에는 시작이 있다.<br>먼저, 이 세계에서 살아갈 너의 모습을 정해 줘.</p></header>
+<div class="layout">
+<section class="card leftcol">
+<div class="cardhead"><span class="eyebrow">01 / 외형 선택</span><span class="step">APPEARANCE</span></div>
+<div class="portraitarea"><div class="stars"></div><div class="moon"></div><div class="ruin"></div><div class="platform"></div><canvas class="sprite" id="hero" width="64" height="80" aria-label="캐릭터 픽셀 미리보기"></canvas><div class="ground"></div><span class="portraitlabel">BASE OUTFIT · TRAVELER</span></div>
+<div class="controls">
+<span class="fieldlabel">체형 선택</span>
 <div class="gender">
-<button class="choice" id="male" aria-pressed="true" type="button"><canvas id="maleIcon" width="32" height="40"></canvas><span>남성형</span><small>모험가</small></button>
-<button class="choice" id="female" aria-pressed="false" type="button"><canvas id="femaleIcon" width="32" height="40"></canvas><span>여성형</span><small>모험가</small></button>
+<button class="choice" id="male" type="button" aria-pressed="true"><canvas class="mini" id="maleIcon" width="16" height="22"></canvas><span><strong>남성형</strong><small>기본 체형 A</small></span></button>
+<button class="choice" id="female" type="button" aria-pressed="false"><canvas class="mini" id="femaleIcon" width="16" height="22"></canvas><span><strong>여성형</strong><small>기본 체형 B</small></span></button>
 </div>
-<div class="preview" style="margin-top:12px"><canvas id="hero" width="64" height="72" aria-label="선택한 캐릭터 픽셀 미리보기"></canvas></div>
+<div class="namebox"><label class="fieldlabel" for="playerName">모험가의 이름</label><input class="nameinput" id="playerName" maxlength="12" autocomplete="off" placeholder="이름을 직접 입력해 줘"><div class="hint"><span>최대 12자 · 이름은 나중에 설정 데이터에 저장돼</span><span id="count">0 / 12</span></div></div>
 </div>
-<div class="panel">
-<label class="section-title" for="playerName">02 · 모험가의 이름</label>
-<input id="playerName" type="text" maxlength="12" autocomplete="off" placeholder="이름을 입력해 줘" aria-describedby="nameHint">
-<div class="hint"><span id="nameHint">원하는 이름을 직접 입력할 수 있어.</span><span id="count">0 / 12</span></div>
-</div>
-<button class="primary" id="confirm" type="button" disabled>이 이름과 모습으로 시작</button>
-<p class="notice" id="notice" role="status">이름을 입력하면 모험을 시작할 수 있어.</p>
 </section>
+<div class="rightcol">
+<section class="card">
+<div class="cardhead"><span class="eyebrow">02 / 초기 능력</span><span class="step">INITIAL ATTRIBUTES</span></div>
+<div class="stats"><p class="statsintro">모든 캐릭터는 같은 기본 수치에서 출발해.</p><div class="statgrid">
+<div class="stat"><span>힘<small>STRENGTH</small></span><b>10</b></div><div class="stat"><span>지능<small>INTELLIGENCE</small></span><b>10</b></div>
+<div class="stat"><span>민첩<small>AGILITY</small></span><b>10</b></div><div class="stat"><span>체력<small>VITALITY</small></span><b>10</b></div>
+<div class="stat"><span>마력<small>MANA</small></span><b>10</b></div><div class="stat"><span>정신<small>MIND</small></span><b>10</b></div>
+</div></div>
+</section>
+<section class="card">
+<div class="cardhead"><span class="eyebrow">03 / 여정의 규칙</span><span class="step">FIELD NOTES</span></div>
+<div class="rules">
+<div class="ruleline"><span class="bullet">✧</span><span>기본 능력치는 6종이며, 각각 20개의 세부 능력치로 구성돼.</span></div>
+<div class="ruleline"><span class="bullet">✧</span><span>장비는 외형과 능력에 영향을 주며, 무기와 직업은 서로 독립적이야.</span></div>
+<div class="ruleline"><span class="bullet">✧</span><span>모험 중 처음 발견한 몬스터·아이템·스킬·특성은 도감에 기록돼.</span></div>
+</div>
+</section>
+</div>
+<div class="foot"><button class="primary" id="confirm" type="button" disabled>이 모습으로 여정 준비</button><p class="notice" id="notice" role="status">이름을 입력하면 캐릭터 정보를 저장할 수 있어.</p></div>
+</div>
+<p class="fineprint">현재 화면은 캐릭터 등록 프로토타입이야. 세부 특성의 무작위 배정과 실제 프롤로그 전투는 아직 연결되지 않았어.</p>
 </main>
 <script>
-const $=id=>document.getElementById(id);let gender="male";
-function pixel(ctx,x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(x,y,w,h)}
-function draw(ctx,type,scale=1){ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);ctx.save();ctx.scale(scale,scale);
-const female=type==="female";const cx=32;
-const dark="#211b30",hair="#29233f",mid="#55436f",skin="#f0c4a1",coat="#282d49",trim="#c5a2ed",boot="#171827";
-// shadow
-pixel(ctx,17,65,30,3,"#111526");
-// legs
-pixel(ctx,21,48,8,14,coat);pixel(ctx,34,48,8,14,coat);pixel(ctx,20,60,10,5,boot);pixel(ctx,34,60,10,5,boot);
-// body/cloak
-pixel(ctx,16,31,32,23,coat);pixel(ctx,12,38,8,18,mid);pixel(ctx,44,38,8,18,mid);pixel(ctx,19,34,26,3,trim);pixel(ctx,29,34,6,18,"#3c345b");
-// arms
-pixel(ctx,12,35,7,17,skin);pixel(ctx,45,35,7,17,skin);pixel(ctx,12,47,7,6,coat);pixel(ctx,45,47,7,6,coat);
-// neck and face
-pixel(ctx,27,25,10,9,skin);pixel(ctx,19,11,26,20,skin);
-if(female){pixel(ctx,16,9,32,25,hair);pixel(ctx,14,17,6,31,hair);pixel(ctx,44,17,6,31,hair);pixel(ctx,18,7,27,7,dark);pixel(ctx,20,23,5,3,"#33243c");}
-else{pixel(ctx,17,9,29,13,hair);pixel(ctx,16,14,7,10,hair);pixel(ctx,42,13,6,10,hair);pixel(ctx,20,7,9,6,dark);pixel(ctx,34,6,8,7,dark);pixel(ctx,25,5,8,5,hair);}
-pixel(ctx,23,20,4,3,"#382b3d");pixel(ctx,37,20,4,3,"#382b3d");pixel(ctx,24,21,2,2,"#a98cff");pixel(ctx,38,21,2,2,"#a98cff");pixel(ctx,29,27,6,1,"#a65e65");
-// hood/cape edge and brooch
-pixel(ctx,15,30,5,25,dark);pixel(ctx,44,30,5,25,dark);pixel(ctx,30,37,4,4,"#f0d18f");pixel(ctx,31,38,2,2,"#fff0bf");
-ctx.restore()}
-draw($("hero").getContext("2d"),"male",1);draw($("maleIcon").getContext("2d"),"male",.5);draw($("femaleIcon").getContext("2d"),"female",.5);
-function select(g){gender=g;$("male").setAttribute("aria-pressed",String(g==="male"));$("female").setAttribute("aria-pressed",String(g==="female"));draw($("hero").getContext("2d"),g,1)}
-$("male").addEventListener("click",()=>select("male"));$("female").addEventListener("click",()=>select("female"));
-$("playerName").addEventListener("input",()=>{const n=$("playerName").value.trim();$("count").textContent=$("playerName").value.length+" / 12";$("confirm").disabled=!n;$("notice").textContent=n?"이름과 캐릭터를 확인하고 시작해 줘.":"이름을 입력하면 모험을 시작할 수 있어."});
-$("confirm").addEventListener("click",()=>{const name=$("playerName").value.trim();if(!name)return;const data={name,gender,createdAt:new Date().toISOString()};try{sessionStorage.setItem("eternalOrbCharacter",JSON.stringify(data))}catch(e){}$("notice").textContent=name+" — 캐릭터가 준비됐어. 다음 장면은 프롤로그 던전이야.";});
+const $=id=>document.getElementById(id);let gender='male';
+function px(c,x,y,w,h,color){c.fillStyle=color;c.fillRect(x,y,w,h)}
+function draw(canvas,type){const c=canvas.getContext('2d');c.clearRect(0,0,canvas.width,canvas.height);c.save();c.scale(canvas.width/64,canvas.height/80);const f=type==='female',ink='#171a2a',hair=f?'#241c36':'#211b31',skin='#edc39e',cloth='#34334f',cloak='#51456d',gold='#d9b879',light='#b69adf';
+px(c,16,72,32,3,'#0b1120');px(c,20,49,10,18,cloth);px(c,34,49,10,18,cloth);px(c,18,66,13,6,ink);px(c,34,66,13,6,ink);
+px(c,15,32,34,23,cloak);px(c,11,39,9,20,cloth);px(c,44,39,9,20,cloth);px(c,18,34,28,4,gold);px(c,28,36,8,17,cloth);
+px(c,11,37,8,16,skin);px(c,45,37,8,16,skin);px(c,11,50,8,7,ink);px(c,45,50,8,7,ink);
+px(c,27,25,10,10,skin);px(c,19,10,26,22,skin);
+if(f){px(c,17,8,30,16,hair);px(c,15,15,7,32,hair);px(c,43,15,7,32,hair);px(c,19,6,26,5,ink);px(c,16,39,6,13,light)}else{px(c,17,8,30,14,hair);px(c,16,14,7,12,hair);px(c,42,13,6,12,hair);px(c,19,5,10,7,ink);px(c,34,5,9,7,ink);px(c,27,4,9,5,hair)}
+px(c,23,20,5,3,ink);px(c,36,20,5,3,ink);px(c,24,21,2,2,light);px(c,37,21,2,2,light);px(c,29,27,6,1,'#a65e68');
+px(c,14,31,5,27,ink);px(c,45,31,5,27,ink);px(c,29,39,6,6,gold);px(c,30,40,4,4,'#fff0c7');
+px(c,19,55,9,4,light);px(c,36,55,9,4,light);c.restore()}
+draw($('hero'),'male');draw($('maleIcon'),'male');draw($('femaleIcon'),'female');
+function select(g){gender=g;$('male').setAttribute('aria-pressed',String(g==='male'));$('female').setAttribute('aria-pressed',String(g==='female'));draw($('hero'),g)}
+$('male').addEventListener('click',()=>select('male'));$('female').addEventListener('click',()=>select('female'));
+$('playerName').addEventListener('input',()=>{const raw=$('playerName').value;const name=raw.trim();$('count').textContent=raw.length+' / 12';$('confirm').disabled=!name;$('notice').textContent=name?'이름과 외형을 확인한 뒤 준비 버튼을 눌러 줘.':'이름을 입력하면 캐릭터 정보를 저장할 수 있어.'});
+$('confirm').addEventListener('click',()=>{const name=$('playerName').value.trim();if(!name)return;const data={name,gender,level:1,stats:{strength:10,intelligence:10,agility:10,vitality:10,mana:10,mind:10},createdAt:new Date().toISOString()};try{localStorage.setItem('eternalOrbCharacter',JSON.stringify(data));$('notice').textContent=name+' — 캐릭터 정보가 이 기기에 저장됐어.'}catch(e){$('notice').textContent='저장할 수 없었어. 브라우저 저장 설정을 확인해 줘.'}});
 </script>
 </body>
 </html>
